@@ -22,63 +22,38 @@ Threat Feed includes a simple, optional DSL to create different elements for the
 
 A `Domain Specific Language` is a great way to express ideas as code in a specific way to address a problem domain. In Threat Feed's case: a DSL to describe elements associated with threat intelligence.
 
+#### Very Basic Example
 
-#### Threat
 ```ruby
-ThreatFeed.threat do
+require 'threat_feed'
+
+include ThreatFeed
+
+example_signature  = signature  { name "Example" }
+example_indicator  = indicator  { name "Example" }
+example_tag        = tag        { name "Example" }
+example_capability = capability { name "Example" }
+example_intention  = intention  { name "Example" }
+example_type       = type       { name "Example" }
+
+example_threat = threat do
   name "Example threat"
-  desc "This is an example threat description."
+  tag  example_tag
+  type example_type 
+  smry "Examples for days."
+  desc "Needed an example, so this threat is it."
+  signature  example_signature
+  indicator  example_indicator
+  intention  example_intention
+  capability example_capability
 end
+
+puts example_threat.to_json pretty: true
 ```
-
-#### Type
-```ruby
-ThreatFeed.type do
-  name "Example type"
-  desc "This is an example threat type."
-end
-```
-
-#### Tag
-```ruby
-ThreatFeed.tag do
-  name "Example tag"
-  desc "This is an example threat tag."
-end
-```
-
-#### Signature
-```ruby
-ThreatFeed.signature do
-  name "Example signature"
-  desc "This is an example threat signature."
-end
-```
-
-## Usage
-
-You can use the Threat Feed `Threat` DSL ( domain specific language ) to describe a threat.
-
-```ruby
-threat = ThreatFeed.threat do
-  id 1
-  name "Threat Example"
-  type example_type
-  tags [tag1, tag2]
-  rank 0
-  impact 0
-  signature   example_signature
-  indicator   "This is an example threat indicator."
-  description "This is an example threat description."
-  intention   "This is an example threat intention."
-  capability  "This is an example threat capability."
-end
-```
-
 #### To JSON
 
 ```ruby
-threat.to_json(pretty: true)
+example_threat.to_json(pretty: true)
 ```
 
 Which will yield a JSON representation of the threat:
@@ -92,7 +67,7 @@ Which will yield a JSON representation of the threat:
 To turn the JSON representation of the threat back into a `Threat` object.
 
 ```ruby
-threat_json = threat.to_json
+threat_json = example_threat.to_json
 
 threat_copy = ThreatFeed.threat do
 	from_json string: threat_json
