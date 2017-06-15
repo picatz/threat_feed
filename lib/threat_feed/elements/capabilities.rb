@@ -4,8 +4,6 @@ module ThreatFeed
 
     module Capabilities 
 
-      @capabilities = Set.new
-
       def capability(c)
         @capabilities << c
       end
@@ -21,10 +19,14 @@ module ThreatFeed
       end
 
       # The +capabilities+ associated with the Threat.
-      def capabilities(c = [])
-        return @capabilities if c.empty?
-        c.each do |cap|
-          @capabilities << cap
+      def capabilities(i = nil)
+        return @capabilities if i.nil?
+        if i.is_a? ElementPool
+          raise "Not an element pool of capabilities" unless i.element_type == Capability 
+          i = i.pool
+        end
+        i.each do |capa|
+          @capabilities << capa
         end
       end
 

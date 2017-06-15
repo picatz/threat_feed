@@ -12,12 +12,17 @@ module ThreatFeed
         @indicators << i
       end
 
-      def indicators=(i)
-        @indicators << i
-      end
+      # TODO fix later
+      #def indicators=(i)
+      #  @indicators << i
+      #end
 
-      def indicators(i = [])
-        return @indicators if i.empty?
+      def indicators(i = nil)
+        return @indicators if i.nil?
+        if i.is_a? ElementPool
+          raise "Not an element pool of signatures" unless i.element_type == Indicator 
+          i = i.pool
+        end
         i.each do |indic|
           @indicators << indic
         end

@@ -17,6 +17,8 @@ require "threat_feed/elements/element"
 require "threat_feed/elements/element_pool"
 require "threat_feed/tags/tag"
 require "threat_feed/elements/tags"
+require "threat_feed/capabilities/capability"
+require "threat_feed/intentions/intention"
 require "threat_feed/signatures/signature"
 require "threat_feed/indicators/indicator"
 require "threat_feed/signatures/signatures"
@@ -58,6 +60,33 @@ module ThreatFeed
     type = Type.new(&block)
   end
 
+  # A single intention.
+  def self.intention(&block)
+    return Intention unless block_given?
+    sig = Intention.new(&block)
+  end
+  
+  def intention(&block)
+    return Intention unless block_given?
+    sig = Intention.new(&block)
+  end
+  
+  def capability(&block)
+    return Capability unless block_given?
+    sig = Capability.new(&block)
+  end
+  
+  # A single capability.
+  def self.capability(&block)
+    return Capability unless block_given?
+    sig = Capability.new(&block)
+  end
+  
+  def capability(&block)
+    return Capability unless block_given?
+    sig = Capability.new(&block)
+  end
+
   # A single signature.
   def self.signature(&block)
     return Signature unless block_given?
@@ -67,6 +96,17 @@ module ThreatFeed
   def signature(&block)
     return Signature unless block_given?
     sig = Signature.new(&block)
+  end
+  
+  # A single indicator.
+  def self.indicator(&block)
+    return Indicator unless block_given?
+    sig = Indicator.new(&block)
+  end
+  
+  def indicator(&block)
+    return Indicator unless block_given?
+    sig = Indicator.new(&block)
   end
 
   #def self.types

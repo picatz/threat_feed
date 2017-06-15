@@ -13,13 +13,16 @@ module ThreatFeed
         @tags << t
       end
 
-      def tags(t = false)
-        return @tags if t == false
-        @tags = t if t.is_a? Tags
-        if t.is_a? Array or t.is_a? Set
-          t.each { |tag| @tags << tag }
+      def tags(t = nil)
+        return @tags if t == nil
+        t = t.pool 
+        if t.is_a? ElementPool
+          raise "Not an element pool of tags" unless t.element_type == Tag
+          t = t.pool
         end
-        false
+        t.each do |tag| 
+          @tags << tag
+        end
       end
 
       def tags=(t)

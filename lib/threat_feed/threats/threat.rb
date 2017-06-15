@@ -31,6 +31,16 @@ module ThreatFeed
         desc "A simple pool of indicators."
         element_type Indicator
       end
+      @capabilities = ThreatFeed::ElementPool.new do
+        name "Capability Pool"
+        desc "A simple pool of capabilities."
+        element_type Capability 
+      end
+      @intentions = ThreatFeed::ElementPool.new do
+        name "Intention Pool"
+        desc "A simple pool of intentions."
+        element_type Intention 
+      end
     end
 
     # Turn a threat into a +key => value+ form.
@@ -43,8 +53,8 @@ module ThreatFeed
                   description:  @description, 
                   impact:       @impact, 
                   rank:         @rank, 
-                  intentions:   @intentions.to_a, 
-                  capabilities: @capabilities.to_a, 
+                  intentions:   @intentions.to_h, 
+                  capabilities: @capabilities.to_h, 
                   indicators:   @indicators.to_h, 
                   signatures:   @signatures.to_h } }
     end

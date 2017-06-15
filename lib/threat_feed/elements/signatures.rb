@@ -22,10 +22,14 @@ module ThreatFeed
         @signatures ? true : false
       end
 
-      def signatures(i = [])
-        return @signatures if i.empty?
-        i.each do |indic|
-          @signatures << indic
+      def signatures(i = nil)
+        return @signatures if i.nil?
+        if i.is_a? ElementPool
+          raise "Not an element pool of signatures" unless i.element_type == Signature 
+          i = i.pool
+        end
+        i.each do |sig|
+          @signatures << sig
         end
       end
 
