@@ -9,7 +9,6 @@ module ThreatFeed
       end
 
       def tag(t)
-        binding.pry
         @tags << t
       end
 

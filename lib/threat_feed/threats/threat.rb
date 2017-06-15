@@ -17,29 +17,19 @@ module ThreatFeed
 
     def setup
       @tags = ThreatFeed::ElementPool.new do
-        name "Tag Pool"
-        desc "A simple pool of tags."
-        element_type Tag
+        pool_type :tag
       end
       @signatures = ThreatFeed::ElementPool.new do
-        name "Signature Pool"
-        desc "A simple pool of signatures."
-        element_type Signature
+        pool_type :signature
       end
       @indicators = ThreatFeed::ElementPool.new do
-        name "Indicator Pool"
-        desc "A simple pool of indicators."
-        element_type Indicator
+        pool_type :indicator
       end
       @capabilities = ThreatFeed::ElementPool.new do
-        name "Capability Pool"
-        desc "A simple pool of capabilities."
-        element_type Capability 
+        pool_type :capability
       end
       @intentions = ThreatFeed::ElementPool.new do
-        name "Intention Pool"
-        desc "A simple pool of intentions."
-        element_type Intention 
+        pool_type :intention
       end
     end
 

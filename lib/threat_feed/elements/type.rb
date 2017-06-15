@@ -11,7 +11,6 @@ module ThreatFeed
 			end
 
 			def type(t = false)
-        binding.pry
 				return @type if t == false
 				raise "Not a type" unless t.is_a? ThreatFeed::Type
 				@type = t

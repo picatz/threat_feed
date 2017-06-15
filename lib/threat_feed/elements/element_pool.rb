@@ -4,12 +4,6 @@ module ThreatFeed
 
     @pool = Set.new
 
-    include ThreatFeed::Elements::Name
-    include ThreatFeed::Elements::Type
-    include ThreatFeed::Elements::ID
-    include ThreatFeed::Elements::Summary
-    include ThreatFeed::Elements::Description
-
     def exists?(element)
       @pool.include?(element)
     end
@@ -43,6 +37,21 @@ module ThreatFeed
       pool << element
     end
 
+    def pool_type(type)
+      case type
+      when :intention
+        @element_type = Intention
+      when :capability
+        @element_type = Capability
+      when :signature
+        @element_type = Signature
+      when :indicator
+        @element_type = Indicator
+      when :tag
+        @element_type = Tag
+      end
+    end
+    
     def element_type(type = nil, override: false)
       unless override
         raise "I'm a free bird!" if @freeeeeeeee_as_a_bird 
