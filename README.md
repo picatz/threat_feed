@@ -2,17 +2,17 @@
 
 Threat Feed is an open source threat intelligence framework. Still a work in progress.
 
-#### Some Thoughts and Plans
-
-"Threat Intelligence as code."
-
-Maybe some `rspec` custom matchers/helpers once I hammer out some more details. 
-
-I'm mostly just having fun with this project while implementing a DSL.
-
 ## DSL
 
 Threat Feed includes a simple, optional DSL to create different elements for the framework.
+
+### Why a DSL?
+
+A domain specific language ( also known as a DSL ) is a way to allow a tight integration of a specific subset of code to a particular problem domain. In Threat Feed's case: a DSL to describe elements associated with threat intelligence. 
+
+##### Advantages 
+
+I want to be able to describe a "threat" as code. I want this to be easy, shareable and testable without knowing a whole bunch about code, distribution, or testing frameworks. 
 
 #### Threat
 ```ruby

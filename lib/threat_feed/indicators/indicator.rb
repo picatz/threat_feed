@@ -1,6 +1,6 @@
 module ThreatFeed
 
-  class Signature < Element 
+  class Indicator < Element 
     
     include ThreatFeed::Elements::Name
     include ThreatFeed::Elements::Type
@@ -9,17 +9,19 @@ module ThreatFeed
     include ThreatFeed::Elements::Description
     
     def from_hash(h)
-      h            = h["signature"]   if h["signature"]
+      h            = h["indicator"]   if h["indicator"]
       @name        = h["name"]        if h["name"]
       @id          = h["id"]          if h["id"]
+      @type        = h["type"]        if h["type"]
       @summary     = h["summary"]     if h["summary"]
       @description = h["description"] if h["description"]
       self
     end
 
     def to_h
-      { signature: { name: @name,
+      { indicator: { name: @name,
           id: @id, 
+          type: @type, 
           summary: @summary,
           description: @description } }
     end
