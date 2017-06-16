@@ -12,9 +12,9 @@ Threat Intelligence is a is an "organized, analyzed and refined information abou
 
 ### Organization
 
-I think have an open source, organized framework that is easy to use and highly accessible to both noobs and professionals alike. This way information can be collected in a meaningful manner. So, what format could help organize the infromation surrounding "Threat Intelligence"?
+I think developing an open source, organized framework that is both easy to use and highly accessible for noos and professionals alike could be really interesting to solve some of the organizational problems when sharing threat intelligence. This way infromation could be distributed and collected in a semi-standarized manner. 
 
-I think defining a `JSON` representation of the elements that need to exists in what defines as `Threat` could be a very useful way to put that information in a meaninful form that isn't something like a Word document or some PDF people don't read. In many ways, `Threat Intellience as Code` is a lot like `Organizing Threat Intelligence through lightweight data-interchange formats` or something like that. But, I guess that doesn't really have the same ring to it, huh?
+I think defining a `JSON` representation of the elements that need to exists in what defines as `Threat` could be a very useful way to put that information in a meaninful form that isn't something like a Word document or some PDF people don't read. In many ways I see this as starting towards that idea of `Threat Intellience as Code`. Though it is a lot like `Organizing Threat Intelligence through lightweight data-interchange formats` or something like that. But, I guess that doesn't really have the same ring to it, huh?
 
 ### Analyzation
 
